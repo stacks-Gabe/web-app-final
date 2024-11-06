@@ -1,9 +1,17 @@
-# React + Vite
+# Web App Final
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+*ADD DESCRIPTION*
 
-Currently, two official plugins are available:
+Audience
+- Puzzle enjoyers
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-# web-app-final
+Soko-Ball Game
+- Push Balls in a 2D array
+- Ball will roll until it hits either a box or a wall
+- When the ball hits a box it moves box 1 unit in any cardinal direction
+- Ball stays in place when it hits box
+- GOAL: move box with the ball to get to target spot
+
+Potential API: https://github.com/thelicato/asciified
+- could be used for word aesthetics
+
