@@ -3,7 +3,7 @@
 *ADD DESCRIPTION*
 
 Audience
-- Puzzle enjoyers
+- Sokoban puzzle enjoyers
 
 Soko-Ball Game
 - Push Balls in a 2D array
