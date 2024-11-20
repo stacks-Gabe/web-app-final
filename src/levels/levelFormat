@@ -1,0 +1,7 @@
+@ = Player
+# = Wall
+. = Empty
+C = Crate
+^ = Spikes
+O = Pits
+G = CrateGoal
