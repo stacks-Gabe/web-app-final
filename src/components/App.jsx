@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useAuthentication } from "../services/authService";
+import { SignIn, SignOut } from "./Auth";
 import Title from "./Title";
 import Game from "./Game";
 import Levels from "./Levels";
@@ -31,7 +32,13 @@ export default function App() {
         />
       );
     case "Levels":
-      return <Levels progress={levelProgress} changePage={setPage} />;
+      return (
+        <Levels
+          progress={levelProgress}
+          setCurrentLevel={setCurrentLevel}
+          changePage={setPage}
+        />
+      );
     case "Settings":
       return <Settings changePage={setPage} />;
     default:
