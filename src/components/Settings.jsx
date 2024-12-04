@@ -1,3 +1,5 @@
+import Footer from "./Footer";
+
 export default function Settings({ changePage }) {
   return (
     <>
@@ -6,6 +8,7 @@ export default function Settings({ changePage }) {
       <button onClick={() => changePage("Title")}>
         Return to Title Screen
       </button>
+      <Footer />
     </>
   );
 }

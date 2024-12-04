@@ -1,4 +1,5 @@
 import { Board } from "../gameComponents/Board.js";
+import Footer from "./Footer";
 
 export default function Game({
   level,
@@ -14,6 +15,7 @@ export default function Game({
       <button onClick={() => changePage("Title")}>
         Return to Title Screen
       </button>
+      <Footer />
     </>
   );
 }

@@ -1,3 +1,5 @@
+import Footer from "./Footer";
+
 export default function Levels({ levelProgress, setCurrentLevel, changePage }) {
   return (
     <>
@@ -20,6 +22,7 @@ export default function Levels({ levelProgress, setCurrentLevel, changePage }) {
       <button onClick={() => changePage("Title")}>
         Return to Title Screen
       </button>
+      <Footer />
     </>
   );
 }

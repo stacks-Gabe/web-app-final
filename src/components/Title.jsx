@@ -1,4 +1,5 @@
 import "./Title.css";
+import Footer from "./Footer";
 
 export default function Title({ currentLevel, changePage }) {
   return (
@@ -9,6 +10,7 @@ export default function Title({ currentLevel, changePage }) {
       </button>
       <button onClick={() => changePage("Levels")}>Levels</button>
       <button onClick={() => changePage("Settings")}>Settings</button>
+      <Footer />
     </>
   );
 }
