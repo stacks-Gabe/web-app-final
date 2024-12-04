@@ -2,18 +2,19 @@ import "./Tile.js";
 
 export class Board {
   constructor(level) {
-    this._rows = 0;
-    this._cols = 0;
+    this.rows = 0;
+    this.cols = 0;
     this._totalGoals = 0;
     this._totalCrates = 0;
     // Top layer will have the following: Wall, Crate, and Ball (Player)
-    this.topBoardLayer = new Array(rows);
+    this.topBoardLayer = new Array(this.rows);
     // Bottom layer will have the following: Goal, Spikes, and Pits
-    this.bottomBoardLayer = new Array(rows);
-    for (let i = 0; i < rows; i++) {
-      this.topBoardLayer[i] = new Array(cols);
-      this.bottomBoardLayer[i] = new Array(cols);
+    this.bottomBoardLayer = new Array(this.rows);
+    for (let i = 0; i < this.rows; i++) {
+      this.topBoardLayer[i] = new Array(this.cols);
+      this.bottomBoardLayer[i] = new Array(this.cols);
     }
+    this.buildBoard(level);
   }
 
   async buildBoard(level) {

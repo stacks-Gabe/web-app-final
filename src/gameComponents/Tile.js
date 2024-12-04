@@ -1,33 +1,31 @@
 export class Tile {
-  constructor(coords) {
+  constructor(coords, sprite) {
     this.coords = coords;
+    this.sprite = sprite;
   }
 }
 
 class Empty extends Tile {
   constructor(coords) {
-    super(coords);
+    super(coords, ".");
   }
 }
 
 class Wall extends Tile {
   constructor(coords) {
-    super(coords);
-    this.sprite = "";
+    super(coords, "#");
   }
 }
 
 class Crate extends Tile {
   constructor(coords) {
-    super(coords);
-    this.sprite = "";
+    super(coords, "C");
   }
 }
 
 class Ball extends Tile {
   constructor(coords) {
-    super(coords);
-    this.sprite = "";
+    super(coords, "@");
   }
 
   move(direction, board) {
@@ -52,8 +50,7 @@ class Ball extends Tile {
 
 class CrateGoal extends Tile {
   constructor(coords) {
-    super(coords);
-    this.sprite = "";
+    super(coords, "G");
   }
 
   push(direction, board) {
@@ -72,13 +69,6 @@ class CrateGoal extends Tile {
   }
 }
 
-class BallGoal extends Tile {
-  constructor(coords) {
-    super(coords);
-    this.sprite = "";
-  }
-}
-
 class Spikes extends Tile {
   constructor(coords) {
     super(coords);
@@ -88,7 +78,6 @@ class Spikes extends Tile {
 
 class Pit extends Tile {
   constructor(coords) {
-    super(coords);
-    this.sprite = "";
+    super(coords, "O");
   }
 }

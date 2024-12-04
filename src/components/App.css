@@ -1,3 +1,10 @@
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -5,14 +12,6 @@
   text-align: center;
   flex: auto;
   justify-content: space-between;
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }
 
 :root {
@@ -42,6 +41,7 @@ a:hover {
 body {
   margin: 0;
   display: flex;
+  flex-direction: column;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
