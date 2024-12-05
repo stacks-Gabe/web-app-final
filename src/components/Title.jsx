@@ -24,7 +24,7 @@ export default function Title({ currentLevel, changePage }) {
         Levels
       </button>
       <button id="CONTROLS" onClick={() => changePage("Controls")}>
-        Settings
+        Controls
       </button>
       <Footer />
     </>

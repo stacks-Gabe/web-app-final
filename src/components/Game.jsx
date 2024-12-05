@@ -31,6 +31,10 @@ export default function Game({
   const D_KEY = 68;
   const R_KEY = 82;
   const Z_KEY = 90;
+  const UP_KEY = 38;
+  const LEFT_KEY = 37;
+  const DOWN_KEY = 40;
+  const RIGHT_KEY = 39;
 
   const BACKGROUND_COLOR = "#FFFFFF";
   const FONT_OUTLINE_COLOR = "#000000";
@@ -112,15 +116,19 @@ export default function Game({
   function _handleKeyDown(event) {
     switch (event.keyCode) {
       case W_KEY:
+      case UP_KEY:
         game.rollBall("Up");
         break;
       case A_KEY:
+      case LEFT_KEY:
         game.rollBall("Left");
         break;
       case S_KEY:
+      case DOWN_KEY:
         game.rollBall("Down");
         break;
       case D_KEY:
+      case RIGHT_KEY:
         game.rollBall("Right");
         break;
       case R_KEY:
@@ -128,6 +136,7 @@ export default function Game({
         break;
       case Z_KEY:
         game.undo();
+        break;
       default:
         break;
     }

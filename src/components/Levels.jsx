@@ -4,7 +4,6 @@ import "./Levels.css";
 import ReturnButton from "./ReturnButton";
 
 export default function Levels({ levelProgress, setCurrentLevel, changePage }) {
-  console.log(levelProgress);
   return (
     <>
       <Header />
@@ -36,7 +35,7 @@ export default function Levels({ levelProgress, setCurrentLevel, changePage }) {
       >
         5
       </button>
-      <ReturnButton setPage={changePage}/>
+      <ReturnButton setPage={changePage} />
       <Footer />
     </>
   );
