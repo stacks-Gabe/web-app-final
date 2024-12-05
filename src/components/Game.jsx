@@ -26,14 +26,13 @@ export default function Game({
   const S_KEY = 83;
   const D_KEY = 68;
 
-  const COLOR_WHITE = "#FFFFFF";
-  const COLOR_GRAY = "#777777";
+  const BACKGROUND_COLOR = "#FFFFFF";
 
   const draw = (ctx) => {
-    ctx.canvas.height = game.getRows() * 15;
-    ctx.canvas.width = game.getCols() * 15;
+    ctx.canvas.height = game.getRows() * 30;
+    ctx.canvas.width = game.getCols() * 30;
     // Background Color
-    ctx.fillStyle = COLOR_WHITE;
+    ctx.fillStyle = BACKGROUND_COLOR;
     ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     // Tiles
     ctx.beginPath();
@@ -44,15 +43,15 @@ export default function Game({
         switch (game.bottomBoardLayer[row][col].sprite) {
           case "^":
             image.src = SpikesSprite;
-            ctx.drawImage(image, col * 15, row * 15);
+            ctx.drawImage(image, col * 30, row * 30);
             break;
           case "O":
             image.src = PitSprite;
-            ctx.drawImage(image, col * 15, row * 15);
+            ctx.drawImage(image, col * 30, row * 30);
             break;
           case "G":
             image.src = CrateGoalSprite;
-            ctx.drawImage(image, col * 15, row * 15);
+            ctx.drawImage(image, col * 30, row * 30);
             break;
           default:
             break;
@@ -61,15 +60,15 @@ export default function Game({
         switch (game.topBoardLayer[row][col].sprite) {
           case "#":
             image.src = WallSprite;
-            ctx.drawImage(image, col * 15, row * 15);
+            ctx.drawImage(image, col * 30, row * 30);
             break;
           case "@":
             image.src = BallSprite;
-            ctx.drawImage(image, col * 15, row * 15);
+            ctx.drawImage(image, col * 30, row * 30);
             break;
           case "C":
             image.src = CrateSprite;
-            ctx.drawImage(image, col * 15, row * 15);
+            ctx.drawImage(image, col * 30, row * 30);
             break;
           default:
             break;

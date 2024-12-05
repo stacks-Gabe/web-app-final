@@ -1,8 +1,7 @@
 Game {
   align-items: center;
-  
 }
 
 canvas {
-  height: 70vh;
+  width: 60vh;
 }
