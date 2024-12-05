@@ -1,31 +1,30 @@
 export class Tile {
-  constructor(coords, sprite) {
-    this.coords = coords;
+  constructor(sprite) {
     this.sprite = sprite;
   }
 }
 
-class Empty extends Tile {
-  constructor(coords) {
-    super(coords, ".");
+export class Empty extends Tile {
+  constructor() {
+    super(".");
   }
 }
 
-class Wall extends Tile {
-  constructor(coords) {
-    super(coords, "#");
+export class Wall extends Tile {
+  constructor() {
+    super("#");
   }
 }
 
-class Crate extends Tile {
-  constructor(coords) {
-    super(coords, "C");
+export class Crate extends Tile {
+  constructor() {
+    super("C");
   }
 }
 
-class Ball extends Tile {
-  constructor(coords) {
-    super(coords, "@");
+export class Ball extends Tile {
+  constructor(row, col) {
+    super("@");
   }
 
   move(direction, board) {
@@ -43,14 +42,14 @@ class Ball extends Tile {
     }
   }
 
-  onSpikes(coords, board) {
-    return board[coords[0]][coords[1]] instanceof Spikes;
+  onSpikes(row, col, board) {
+    return board[row][col] instanceof Spikes;
   }
 }
 
-class CrateGoal extends Tile {
-  constructor(coords) {
-    super(coords, "G");
+export class CrateGoal extends Tile {
+  constructor() {
+    super("G");
   }
 
   push(direction, board) {
@@ -69,15 +68,14 @@ class CrateGoal extends Tile {
   }
 }
 
-class Spikes extends Tile {
-  constructor(coords) {
-    super(coords);
-    this.sprite = "";
+export class Spikes extends Tile {
+  constructor() {
+    super("^");
   }
 }
 
-class Pit extends Tile {
-  constructor(coords) {
-    super(coords, "O");
+export class Pit extends Tile {
+  constructor() {
+    super("O");
   }
 }

@@ -8,17 +8,12 @@ import Settings from "./Settings";
 import "./App.css";
 
 export default function App() {
-  const [levelProgress, setLevelProgress] = useState(1);
-  const [currentLevel, setCurrentLevel] = useState(1);
-  const [key, setKey] = useState("");
+  const [levelProgress, setLevelProgress] = useState(0);
+  const [currentLevel, setCurrentLevel] = useState(0);
   const [page, setPage] = useState("Title");
   const user = useAuthentication();
   const [language, setLanguage] = useState("en");
   const [errorLang, setErrorLang] = useState("");
-
-  const keyUp = (event) => {
-    setKey(event.key);
-  };
 
   useEffect(() => {
     fetch("https://hellosalut.stefanbohacek.dev/?mode=auto")
@@ -35,7 +30,6 @@ export default function App() {
       return (
         <Game
           level={currentLevel}
-          key={key}
           changeCurrentLevel={setCurrentLevel}
           changeLevelProgress={setLevelProgress}
           changePage={setPage}

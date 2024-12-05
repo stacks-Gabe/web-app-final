@@ -8,18 +8,23 @@ import "./Game.css";
 
 export default function Game({
   level,
-  key,
   changeCurrentLevel,
   changeLevelProgress,
   changePage,
 }) {
   const game = new Board(level);
-  console.log(game.rows);
+
+  const W_KEY = 87;
+  const A_KEY = 65;
+  const S_KEY = 83;
+  const D_KEY = 68;
+
+  const COLOR_WHITE = "#FFFFFF";
 
   const draw = (ctx) => {
-    let length = ctx.canvas.height;
+    const length = ctx.canvas.height;
     // Background Color
-    ctx.fillStyle = "#FFFFFF";
+    ctx.fillStyle = COLOR_WHITE;
     ctx.rect(0, 0, length, length);
     ctx.fill();
     // Tiles
@@ -50,6 +55,28 @@ export default function Game({
       }
     }
   };
+
+  const _handleKeyDown = (event) => {
+    switch (event.keyCode) {
+      case W_KEY:
+        game.rollBall("Up");
+        break;
+      case A_KEY:
+        game.rollBall("Left");
+        break;
+      case S_KEY:
+        game.rollBall("Down");
+        break;
+      case D_KEY:
+        game.rollBall("Right");
+        break;
+      default:
+        break;
+    }
+    console.log(event.keyCode);
+  };
+
+  window.addEventListener("keydown", _handleKeyDown);
 
   return (
     <>
