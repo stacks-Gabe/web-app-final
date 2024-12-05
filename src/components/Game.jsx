@@ -137,6 +137,7 @@ export default function Game({
       <Header />
       <Canvas draw={draw} doRender={renderBoard} />
       <button onClick={_returnToTitle}>Return to Title Screen</button>
+      {/* Return Button custom element when replaced with above line breaks everything */}
       <button onClick={_moveToNextLevel} disabled={lockButton}>
         Next Level
       </button>
