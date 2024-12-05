@@ -42,8 +42,6 @@ export class Board {
       row++;
       col = 0;
     }
-    console.log(this.topBoardLayer);
-    console.log(this.bottomBoardLayer);
   }
 
   _addComponent(component, row, col) {
@@ -91,7 +89,6 @@ export class Board {
       default:
         throw new Error(`${direction} is an invalid direction.`);
     }
-    console.log(this.topBoardLayer);
   }
 
   _moveBall(rowVector, colVector) {
@@ -100,14 +97,15 @@ export class Board {
     const newCol = this._ballPos.col + colVector;
 
     if (this.topBoardLayer[newRow][newCol] instanceof Empty) {
-      this.topBoardLayer[newRow][newCol] = new Ball();
       this.topBoardLayer[this._ballPos.row][this._ballPos.col] = new Empty();
-      this._ballPos = { row: newRow, col: newCol };
-      if (!this._checkBallPop()) {
+      if (
+        !this._checkBallPop(newRow, newCol) &&
+        !this._checkOnPit(newRow, newCol)
+      ) {
+        this.topBoardLayer[newRow][newCol] = new Ball();
+        this._ballPos = { row: newRow, col: newCol };
         this._moveBall(rowVector, colVector);
       } else {
-        console.log("YOU DIED");
-        this.topBoardLayer[newRow][newCol] = new Empty();
         this._ballPos = { row: -1, col: -1 };
       }
     } else if (this.topBoardLayer[newRow][newCol] instanceof Crate) {
@@ -115,11 +113,8 @@ export class Board {
     }
   }
 
-  _checkBallPop() {
-    return (
-      this.bottomBoardLayer[this._ballPos.row][this._ballPos.col] instanceof
-      Spikes
-    );
+  _checkBallPop(ballRow, ballCol) {
+    return this.bottomBoardLayer[ballRow][ballCol] instanceof Spikes;
   }
 
   _moveCrate(rowVector, colVector, crateRow, crateCol) {
@@ -127,8 +122,26 @@ export class Board {
     const newCol = crateCol + colVector;
 
     if (this.topBoardLayer[newRow][newCol] instanceof Empty) {
-      this.topBoardLayer[newRow][newCol] = new Crate();
+      if (!this._checkOnPit(newRow, newCol)) {
+        this.topBoardLayer[newRow][newCol] = new Crate();
+      }
       this.topBoardLayer[crateRow][crateCol] = new Empty();
+      // Subtract if Crate is pushed off of the goal.
+      if (this._checkOnGoal(crateRow, crateCol)) {
+        this._crateAtGoals--;
+      }
+      // Add if Crate is pushed onto the goal.
+      if (this._checkOnGoal(newRow, newCol)) {
+        this._crateAtGoals++;
+      }
     }
+  }
+
+  _checkOnGoal(crateRow, crateCol) {
+    return this.bottomBoardLayer[crateRow][crateCol] instanceof CrateGoal;
+  }
+
+  _checkOnPit(row, col) {
+    return this.bottomBoardLayer[row][col] instanceof Pit;
   }
 }

@@ -21,7 +21,6 @@ export default function App() {
       .then((jsonData) => setLanguage(jsonData?.code))
       .catch((e) => setErrorLang(`${e}`));
   }, []);
-  console.log(language, errorLang);
 
   switch (page) {
     case "Title":

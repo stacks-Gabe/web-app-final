@@ -19,6 +19,7 @@ export default function Game({
   changeLevelProgress,
   changePage,
 }) {
+  const [renderBoard, setRenderBoard] = useState(false);
   const game = new Board(level);
 
   const W_KEY = 87;
@@ -35,23 +36,23 @@ export default function Game({
     ctx.fillStyle = BACKGROUND_COLOR;
     ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     // Tiles
-    ctx.beginPath();
     for (let row = 0; row < game.getRows(); row++) {
       for (let col = 0; col < game.getCols(); col++) {
-        const image = new Image();
+        const topimage = new Image();
+        const bottomImage = new Image();
         // Bottom Tile
         switch (game.bottomBoardLayer[row][col].sprite) {
           case "^":
-            image.src = SpikesSprite;
-            ctx.drawImage(image, col * 30, row * 30);
+            topimage.src = SpikesSprite;
+            ctx.drawImage(topimage, col * 30, row * 30);
             break;
           case "O":
-            image.src = PitSprite;
-            ctx.drawImage(image, col * 30, row * 30);
+            topimage.src = PitSprite;
+            ctx.drawImage(topimage, col * 30, row * 30);
             break;
           case "G":
-            image.src = CrateGoalSprite;
-            ctx.drawImage(image, col * 30, row * 30);
+            topimage.src = CrateGoalSprite;
+            ctx.drawImage(topimage, col * 30, row * 30);
             break;
           default:
             break;
@@ -59,16 +60,16 @@ export default function Game({
         // Top Tile
         switch (game.topBoardLayer[row][col].sprite) {
           case "#":
-            image.src = WallSprite;
-            ctx.drawImage(image, col * 30, row * 30);
+            bottomImage.src = WallSprite;
+            ctx.drawImage(bottomImage, col * 30, row * 30);
             break;
           case "@":
-            image.src = BallSprite;
-            ctx.drawImage(image, col * 30, row * 30);
+            bottomImage.src = BallSprite;
+            ctx.drawImage(bottomImage, col * 30, row * 30);
             break;
           case "C":
-            image.src = CrateSprite;
-            ctx.drawImage(image, col * 30, row * 30);
+            bottomImage.src = CrateSprite;
+            ctx.drawImage(bottomImage, col * 30, row * 30);
             break;
           default:
             break;
@@ -94,17 +95,20 @@ export default function Game({
       default:
         break;
     }
-    console.log(event.keyCode);
+    setRenderBoard(true);
+  };
+
+  const _cleanEventListeners = () => {
+    window.removeEventListener("keydown", _handleKeyDown);
+    changePage("Title");
   };
 
   window.addEventListener("keydown", _handleKeyDown);
 
   return (
     <>
-      <Canvas draw={draw} />
-      <button onClick={() => changePage("Title")}>
-        Return to Title Screen
-      </button>
+      <Canvas draw={draw} doRender={renderBoard} />
+      <button onClick={_cleanEventListeners}>Return to Title Screen</button>
       <Footer />
     </>
   );
