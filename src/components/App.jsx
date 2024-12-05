@@ -39,6 +39,7 @@ export default function App() {
           changeCurrentLevel={setCurrentLevel}
           levelProgress={levelProgress}
           changeLevelProgress={setLevelProgress}
+          page={page}
           changePage={setPage}
         />
       );

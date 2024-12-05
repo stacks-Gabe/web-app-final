@@ -1,5 +1,5 @@
 import { Board } from "../gameComponents/Board.js";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import Canvas from "./Canvas";
 import Footer from "./Footer";
@@ -18,6 +18,7 @@ export default function Game({
   changeCurrentLevel,
   levelProgress,
   changeLevelProgress,
+  page,
   changePage,
 }) {
   const [renderBoard, setRenderBoard] = useState(false);
@@ -28,6 +29,8 @@ export default function Game({
   const A_KEY = 65;
   const S_KEY = 83;
   const D_KEY = 68;
+  const R_KEY = 82;
+  const Z_KEY = 90;
 
   const BACKGROUND_COLOR = "#FFFFFF";
   const FONT_OUTLINE_COLOR = "#000000";
@@ -115,6 +118,11 @@ export default function Game({
       case D_KEY:
         game.rollBall("Right");
         break;
+      case R_KEY:
+        game.restart();
+        break;
+      case Z_KEY:
+        game.undo();
       default:
         break;
     }
