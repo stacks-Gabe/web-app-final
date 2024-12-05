@@ -97,6 +97,11 @@ export class Board {
   }
 
   _moveBall(rowVector, colVector, hasMoved) {
+    // Edge Case: If the ball is gone (popped or fallen into a pit), don't move.
+    if (this._ballPos.row === -1) {
+      return;
+    }
+
     // All boards must be surrounded by walls.
     const newRow = this._ballPos.row + rowVector;
     const newCol = this._ballPos.col + colVector;

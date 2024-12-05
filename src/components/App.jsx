@@ -29,11 +29,11 @@ export default function App() {
       .catch((e) => setErrorLang(`${e}`));
   }, []);
 
-  switch (page) {
-    case "Title":
-      return <Title currentLevel={currentLevel} changePage={setPage} />;
-    case "Game":
-      return (
+  return (
+    <>
+      {page === "Title" ? (
+        <Title currentLevel={currentLevel} changePage={setPage} />
+      ) : page === "Game" ? (
         <Game
           currentLevel={currentLevel}
           changeCurrentLevel={setCurrentLevel}
@@ -42,18 +42,17 @@ export default function App() {
           page={page}
           changePage={setPage}
         />
-      );
-    case "Levels":
-      return (
+      ) : page === "Levels" ? (
         <Levels
           levelProgress={levelProgress}
           setCurrentLevel={setCurrentLevel}
           changePage={setPage}
         />
-      );
-    case "Controls":
-      return <Controls changePage={setPage} />;
-    default:
-      return <p>{page} is not a valid page</p>;
-  }
+      ) : page === "Controls" ? (
+        <Controls changePage={setPage} />
+      ) : (
+        <p>{page} is not a valid page</p>
+      )}
+    </>
+  );
 }

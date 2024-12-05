@@ -36,6 +36,11 @@ export default function Game({
   const FONT_OUTLINE_COLOR = "#000000";
   const FONT_COLOR = "#00FF00";
 
+  useEffect(() => {
+    window.addEventListener("keydown", _handleKeyDown);
+    return () => window.removeEventListener("keydown", _handleKeyDown);
+  }, []);
+
   const draw = (ctx) => {
     ctx.canvas.height = game.getRows() * 30;
     ctx.canvas.width = game.getCols() * 30;
@@ -104,7 +109,7 @@ export default function Game({
     }
   };
 
-  const _handleKeyDown = (event) => {
+  function _handleKeyDown(event) {
     switch (event.keyCode) {
       case W_KEY:
         game.rollBall("Up");
@@ -127,25 +132,16 @@ export default function Game({
         break;
     }
     setRenderBoard(true);
-  };
-
-  const _moveToNextLevel = () => {
-    changePage("Levels");
-  };
-
-  const _returnToTitle = () => {
-    window.removeEventListener("keydown", _handleKeyDown);
-    changePage("Title");
-  };
-
-  window.addEventListener("keydown", _handleKeyDown);
+  }
 
   return (
     <>
       <Header />
       <Canvas draw={draw} doRender={renderBoard} />
-      <button onClick={_returnToTitle}>Return to Title Screen</button>
-      <button onClick={_moveToNextLevel} disabled={lockButton}>
+      <button onClick={() => changePage("Title")}>
+        Return to Title Screen
+      </button>
+      <button onClick={() => changePage("Levels")} disabled={lockButton}>
         Next Level
       </button>
       <Footer />
