@@ -6,6 +6,13 @@ import Canvas from "./Canvas";
 import Footer from "./Footer";
 import "./Game.css";
 
+import BallSprite from "../img/Ball.png";
+import CrateSprite from "../img/Crate.png";
+import CrateGoalSprite from "../img/CrateGoal.png";
+import PitSprite from "../img/Pit.png";
+import SpikesSprite from "../img/Spikes.png";
+import WallSprite from "../img/Wall.png";
+
 export default function Game({
   level,
   changeCurrentLevel,
@@ -20,34 +27,49 @@ export default function Game({
   const D_KEY = 68;
 
   const COLOR_WHITE = "#FFFFFF";
+  const COLOR_GRAY = "#777777";
 
   const draw = (ctx) => {
-    const length = ctx.canvas.height;
+    ctx.canvas.height = game.getRows() * 15;
+    ctx.canvas.width = game.getCols() * 15;
     // Background Color
     ctx.fillStyle = COLOR_WHITE;
-    ctx.rect(0, 0, length, length);
-    ctx.fill();
+    ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     // Tiles
-    for (let row = 0; row < game.rows; row++) {
-      for (let col = 0; col < game.cols; col++) {
-        // Top Tile
+    ctx.beginPath();
+    for (let row = 0; row < game.getRows(); row++) {
+      for (let col = 0; col < game.getCols(); col++) {
+        const image = new Image();
+        // Bottom Tile
         switch (game.bottomBoardLayer[row][col].sprite) {
           case "^":
+            image.src = SpikesSprite;
+            ctx.drawImage(image, col * 15, row * 15);
             break;
           case "O":
+            image.src = PitSprite;
+            ctx.drawImage(image, col * 15, row * 15);
             break;
           case "G":
+            image.src = CrateGoalSprite;
+            ctx.drawImage(image, col * 15, row * 15);
             break;
           default:
             break;
         }
-        // Bottom Tile
+        // Top Tile
         switch (game.topBoardLayer[row][col].sprite) {
           case "#":
+            image.src = WallSprite;
+            ctx.drawImage(image, col * 15, row * 15);
             break;
           case "@":
+            image.src = BallSprite;
+            ctx.drawImage(image, col * 15, row * 15);
             break;
           case "C":
+            image.src = CrateSprite;
+            ctx.drawImage(image, col * 15, row * 15);
             break;
           default:
             break;

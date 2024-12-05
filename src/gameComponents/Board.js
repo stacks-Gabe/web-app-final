@@ -11,6 +11,14 @@ export class Board {
     this._buildBoard();
   }
 
+  getRows() {
+    return this._level.rows;
+  }
+
+  getCols() {
+    return this._level.cols;
+  }
+
   _buildBoard() {
     // Initialize 2D Matrix that stores Empties
     this.topBoardLayer = new Array(this._level.rows);
