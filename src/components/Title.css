@@ -6,13 +6,13 @@ body {
   align-items: center;
   height: 100vh;
   width: 100%;
-  flex-direction: column; 
+  flex-direction: column;
 }
 
 #jumping-text {
   font-size: 96px;
   font-weight: bold;
-  letter-spacing: 5px; 
+  letter-spacing: 5px;
   margin-bottom: 20px;
   margin-top: 250px;
   text-align: center;
@@ -20,7 +20,7 @@ body {
 
 #jumping-text span {
   display: inline-block;
-  animation: jump 6s ease-in-out infinite; 
+  animation: jump 6s ease-in-out infinite;
 }
 
 #jumping-text span:nth-child(1) {
@@ -65,8 +65,8 @@ body {
 
 button {
   padding: 20px 50px;
-  font-size: 1.5em; 
-  margin: 10px; 
+  font-size: 1.5em;
+  margin: 10px;
   text-align: center;
   border-radius: 12px;
 }
@@ -98,14 +98,30 @@ button:focus-visible {
 }
 
 @keyframes rainbow-border {
-  0% { border-color: red; }
-  14% { border-color: orange; }
-  28% { border-color: yellow; }
-  42% { border-color: green; }
-  57% { border-color: blue; }
-  71% { border-color: indigo; }
-  85% { border-color: violet; }
-  100% { border-color: red; }
+  0% {
+    border-color: red;
+  }
+  14% {
+    border-color: orange;
+  }
+  28% {
+    border-color: yellow;
+  }
+  42% {
+    border-color: green;
+  }
+  57% {
+    border-color: blue;
+  }
+  71% {
+    border-color: indigo;
+  }
+  85% {
+    border-color: violet;
+  }
+  100% {
+    border-color: red;
+  }
 }
 
 #LEVELS {
@@ -148,7 +164,7 @@ button:focus-visible {
   left: 0;
 }
 
-#SETTINGS {
+#CONTROLS {
   background-color: black;
   color: green;
   font-weight: 900;
@@ -161,7 +177,7 @@ button:focus-visible {
   overflow: hidden;
 }
 
-#SETTINGS::before {
+#CONTROLS::before {
   content: "";
   position: absolute;
   top: 0;
@@ -181,12 +197,12 @@ button:focus-visible {
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-#SETTINGS:hover {
+#CONTROLS:hover {
   transform: scale(1.1);
   box-shadow: 0 4px 12px rgba(0, 255, 0, 0.6);
 }
 
-#SETTINGS:hover::before {
+#CONTROLS:hover::before {
   transform: scale(1);
   opacity: 1;
 }

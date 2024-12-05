@@ -2,8 +2,10 @@ import { useRef } from "react";
 import { Board } from "../gameComponents/Board.js";
 import { Tile } from "../gameComponents/Tile.js";
 import { useState, useEffect } from "react";
+
 import Canvas from "./Canvas";
 import Footer from "./Footer";
+import Header from "./Header";
 import "./Game.css";
 
 import BallSprite from "../img/Ball.png";
@@ -14,13 +16,15 @@ import SpikesSprite from "../img/Spikes.png";
 import WallSprite from "../img/Wall.png";
 
 export default function Game({
-  level,
+  currentLevel,
   changeCurrentLevel,
+  levelProgress,
   changeLevelProgress,
   changePage,
 }) {
   const [renderBoard, setRenderBoard] = useState(false);
-  const game = new Board(level);
+  const [lockButton, setLockButton] = useState(true);
+  const game = new Board(currentLevel);
 
   const W_KEY = 87;
   const A_KEY = 65;
@@ -28,6 +32,8 @@ export default function Game({
   const D_KEY = 68;
 
   const BACKGROUND_COLOR = "#FFFFFF";
+  const FONT_OUTLINE_COLOR = "#000000";
+  const FONT_COLOR = "#00FF00";
 
   const draw = (ctx) => {
     ctx.canvas.height = game.getRows() * 30;
@@ -76,6 +82,25 @@ export default function Game({
         }
       }
     }
+    if (game.isPuzzleSolved()) {
+      ctx.font = "20px Calibri";
+      ctx.fillStyle = FONT_OUTLINE_COLOR;
+      ctx.strokeText(
+        "Puzzle Solved!",
+        ctx.canvas.width / 8,
+        ctx.canvas.height / 8
+      );
+      ctx.fillStyle = FONT_COLOR;
+      ctx.fillText(
+        "Puzzle Solved!",
+        ctx.canvas.width / 8,
+        ctx.canvas.height / 8
+      );
+      window.removeEventListener("keydown", _handleKeyDown);
+      changeCurrentLevel(currentLevel < 4 ? currentLevel + 1 : 4);
+      changeLevelProgress(Math.max(currentLevel + 1, levelProgress));
+      setLockButton(false);
+    }
   };
 
   const _handleKeyDown = (event) => {
@@ -98,7 +123,11 @@ export default function Game({
     setRenderBoard(true);
   };
 
-  const _cleanEventListeners = () => {
+  const _moveToNextLevel = () => {
+    changePage("Levels");
+  };
+
+  const _returnToTitle = () => {
     window.removeEventListener("keydown", _handleKeyDown);
     changePage("Title");
   };
@@ -107,8 +136,12 @@ export default function Game({
 
   return (
     <>
+      <Header />
       <Canvas draw={draw} doRender={renderBoard} />
-      <button onClick={_cleanEventListeners}>Return to Title Screen</button>
+      <button onClick={_returnToTitle}>Return to Title Screen</button>
+      <button onClick={_moveToNextLevel} disabled={lockButton}>
+        Next Level
+      </button>
       <Footer />
     </>
   );

@@ -1,9 +1,11 @@
-import "./Title.css";
+import Header from "./Header";
 import Footer from "./Footer";
+import "./Title.css";
 
 export default function Title({ currentLevel, changePage }) {
   return (
     <>
+      <Header />
       <h1 id="jumping-text">
         <span>S</span>
         <span>o</span>
@@ -21,7 +23,7 @@ export default function Title({ currentLevel, changePage }) {
       <button id="LEVELS" onClick={() => changePage("Levels")}>
         Levels
       </button>
-      <button id="SETTINGS" onClick={() => changePage("Settings")}>
+      <button id="CONTROLS" onClick={() => changePage("Controls")}>
         Settings
       </button>
       <Footer />

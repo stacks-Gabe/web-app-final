@@ -4,7 +4,7 @@ import { SignIn, SignOut } from "./Auth";
 import Title from "./Title";
 import Game from "./Game";
 import Levels from "./Levels";
-import Settings from "./Settings";
+import Controls from "./Controls";
 import "./App.css";
 
 export default function App() {
@@ -28,8 +28,9 @@ export default function App() {
     case "Game":
       return (
         <Game
-          level={currentLevel}
+          currentLevel={currentLevel}
           changeCurrentLevel={setCurrentLevel}
+          levelProgress={levelProgress}
           changeLevelProgress={setLevelProgress}
           changePage={setPage}
         />
@@ -37,13 +38,13 @@ export default function App() {
     case "Levels":
       return (
         <Levels
-          progress={levelProgress}
+          levelProgress={levelProgress}
           setCurrentLevel={setCurrentLevel}
           changePage={setPage}
         />
       );
-    case "Settings":
-      return <Settings changePage={setPage} />;
+    case "Controls":
+      return <Controls changePage={setPage} />;
     default:
       return <p>{page} is not a valid page</p>;
   }

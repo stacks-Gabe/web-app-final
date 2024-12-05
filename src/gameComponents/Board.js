@@ -19,6 +19,10 @@ export class Board {
     return this._level.cols;
   }
 
+  isPuzzleSolved() {
+    return this._level.totalGoals === this._crateAtGoals;
+  }
+
   _buildBoard() {
     // Initialize 2D Matrix that stores Empties
     this.topBoardLayer = new Array(this._level.rows);
