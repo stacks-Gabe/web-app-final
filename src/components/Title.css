@@ -182,8 +182,8 @@ button:focus-visible {
   height: 100%;
   background: repeating-linear-gradient(
     45deg,
-    green,
-    green 10px,
+    yellow,
+    yellow 10px,
     black 10px,
     black 20px
   );
