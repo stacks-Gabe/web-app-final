@@ -36,10 +36,7 @@ export default function Levels({ levelProgress, setCurrentLevel, changePage }) {
       >
         5
       </button>
-      <button id="RETURN" onClick={() => changePage("Title")}>
-        Return to Title Screen
-      </button>
-      {/* <ReturnButton onClick={() => changePage("Title")}/> */}
+      <ReturnButton setPage={changePage}/>
       <Footer />
     </>
   );

@@ -141,6 +141,7 @@ export default function Game({
       <button onClick={() => changePage("Title")}>
         Return to Title Screen
       </button>
+      {/* Return Button custom element when replaced with above line breaks everything */}
       <button onClick={() => changePage("Levels")} disabled={lockButton}>
         Next Level
       </button>

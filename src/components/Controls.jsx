@@ -6,6 +6,7 @@ import WasdKeys from "../img/WasdKeys.gif";
 import ArrowKeys from "../img/ArrowKeys.gif";
 import RKey from "../img/RKey.gif";
 import ZKey from "../img/ZKey.gif";
+import ReturnButton from "./ReturnButton";
 
 export default function Controls({ changePage }) {
   return (
@@ -16,9 +17,7 @@ export default function Controls({ changePage }) {
       <img src={ArrowKeys} alt="loading..." />
       <img src={RKey} alt="loading..." />
       <img src={ZKey} alt="loading..." />
-      <button onClick={() => changePage("Title")}>
-        Return to Title Screen
-      </button>
+      <ReturnButton setPage={changePage}/>
       <Footer />
     </>
   );
