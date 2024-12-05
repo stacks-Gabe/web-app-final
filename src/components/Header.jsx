@@ -1,9 +1,9 @@
+import { SignIn, SignOut } from "./Auth";
+import { useAuthentication } from "../services/authService";
+
 import "./Header.css";
 
 export default function Header() {
-  return (
-    <header>
-      <button>Sign In</button>
-    </header>
-  );
+  const user = useAuthentication();
+  return <header>{!user ? <SignIn /> : <SignOut />}</header>;
 }

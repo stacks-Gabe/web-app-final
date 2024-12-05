@@ -1,7 +1,5 @@
-import { useRef } from "react";
 import { Board } from "../gameComponents/Board.js";
-import { Tile } from "../gameComponents/Tile.js";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import Canvas from "./Canvas";
 import Footer from "./Footer";

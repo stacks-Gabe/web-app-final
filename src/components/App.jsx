@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useAuthentication } from "../services/authService";
-import { SignIn, SignOut } from "./Auth";
+
 import Title from "./Title";
 import Game from "./Game";
 import Levels from "./Levels";
@@ -14,6 +14,13 @@ export default function App() {
   const user = useAuthentication();
   const [language, setLanguage] = useState("en");
   const [errorLang, setErrorLang] = useState("");
+
+  useEffect(() => {
+    if (user) {
+      // TODO: Set the levelProgress from signing in!
+      setLevelProgress(0);
+    }
+  }, [user]);
 
   useEffect(() => {
     fetch("https://hellosalut.stefanbohacek.dev/?mode=auto")
