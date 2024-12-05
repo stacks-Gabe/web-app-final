@@ -3,7 +3,7 @@ import "./Footer.css";
 export default function Footer() {
   return (
     <footer>
-      <p>Made by Wesley Ng & Gabriel</p>
+      <p>Made by Wesley Ng & Gabriel Garcia</p>
       <p>
         GitHub Link: <a>https://github.com/stacks-Gabe/web-app-final</a>
       </p>

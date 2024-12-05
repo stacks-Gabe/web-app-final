@@ -1,4 +1,5 @@
 import Footer from "./Footer";
+import "./Levels.css";
 
 export default function Levels({ levelProgress, setCurrentLevel, changePage }) {
   return (
@@ -19,7 +20,7 @@ export default function Levels({ levelProgress, setCurrentLevel, changePage }) {
       <button onClick={() => _enterGame(4, setCurrentLevel, changePage)}>
         5
       </button>
-      <button onClick={() => changePage("Title")}>
+      <button id = 'RETURN' onClick={() => changePage("Title")}>
         Return to Title Screen
       </button>
       <Footer />
