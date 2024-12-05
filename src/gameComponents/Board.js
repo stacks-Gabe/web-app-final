@@ -8,6 +8,7 @@ export class Board {
     this._ballPos = { row: -1, col: -1 };
     this.topBoardLayer = []; // Contains following: Wall, Crate, and Ball (Player)
     this.bottomBoardLayer = []; // Contains the following: Goal, Spikes, and Pits
+    this._undoStack = [];
     this._buildBoard();
   }
 
@@ -79,41 +80,69 @@ export class Board {
   rollBall(direction) {
     switch (direction) {
       case "Up":
-        this._moveBall(-1, 0);
+        this._moveBall(-1, 0, false);
         break;
       case "Down":
-        this._moveBall(1, 0);
+        this._moveBall(1, 0, false);
         break;
       case "Left":
-        this._moveBall(0, -1);
+        this._moveBall(0, -1, false);
         break;
       case "Right":
-        this._moveBall(0, 1);
+        this._moveBall(0, 1, false);
         break;
       default:
         throw new Error(`${direction} is an invalid direction.`);
     }
   }
 
-  _moveBall(rowVector, colVector) {
+  _moveBall(rowVector, colVector, hasMoved) {
     // All boards must be surrounded by walls.
     const newRow = this._ballPos.row + rowVector;
     const newCol = this._ballPos.col + colVector;
 
     if (this.topBoardLayer[newRow][newCol] instanceof Empty) {
       this.topBoardLayer[this._ballPos.row][this._ballPos.col] = new Empty();
+      if (!hasMoved) {
+        this._undoStack.push({
+          tile: new Ball(),
+          row: this._ballPos.row,
+          col: this._ballPos.col,
+        });
+      }
       if (
         !this._checkBallPop(newRow, newCol) &&
         !this._checkOnPit(newRow, newCol)
       ) {
         this.topBoardLayer[newRow][newCol] = new Ball();
         this._ballPos = { row: newRow, col: newCol };
-        this._moveBall(rowVector, colVector);
+        this._moveBall(rowVector, colVector, true);
       } else {
         this._ballPos = { row: -1, col: -1 };
       }
     } else if (this.topBoardLayer[newRow][newCol] instanceof Crate) {
+      if (!hasMoved) {
+        this._undoStack.push({
+          tile: new Ball(),
+          row: this._ballPos.row,
+          col: this._ballPos.col,
+        });
+      } else {
+        this._undoStack.push({
+          tile: new Empty(),
+          row: this._ballPos.row,
+          col: this._ballPos.col,
+        });
+      }
       this._moveCrate(rowVector, colVector, newRow, newCol);
+    } else {
+      if (hasMoved) {
+        this._undoStack.push({
+          tile: new Empty(),
+          row: this._ballPos.row,
+          col: this._ballPos.col,
+        });
+      }
     }
   }
 
@@ -126,6 +155,16 @@ export class Board {
     const newCol = crateCol + colVector;
 
     if (this.topBoardLayer[newRow][newCol] instanceof Empty) {
+      this._undoStack.push({
+        tile: new Crate(),
+        row: crateRow,
+        col: crateCol,
+      });
+      this._undoStack.push({
+        tile: new Empty(),
+        row: newRow,
+        col: newCol,
+      });
       if (!this._checkOnPit(newRow, newCol)) {
         this.topBoardLayer[newRow][newCol] = new Crate();
       }
@@ -147,5 +186,22 @@ export class Board {
 
   _checkOnPit(row, col) {
     return this.bottomBoardLayer[row][col] instanceof Pit;
+  }
+
+  restart() {
+    this._buildBoard();
+    this._crateAtGoals = 0;
+    this._undoStack = [];
+  }
+
+  undo() {
+    if (this._undoStack.length !== 0) {
+      let tile = null;
+      do {
+        tile = this._undoStack.pop();
+        this.topBoardLayer[tile.row][tile.col] = tile.tile;
+      } while (!(tile.tile instanceof Ball));
+      this._ballPos = { row: tile.row, col: tile.col };
+    }
   }
 }
