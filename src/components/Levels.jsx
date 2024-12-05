@@ -3,11 +3,16 @@ import Footer from "./Footer";
 import "./Levels.css";
 import ReturnButton from "./ReturnButton";
 
-export default function Levels({ levelProgress, setCurrentLevel, changePage }) {
+export default function Levels({
+  levelProgress,
+  setCurrentLevel,
+  changePage,
+  language,
+}) {
   return (
     <>
-      <Header />
-      <h1>Levels</h1>
+      <Header language={language} />
+      <h1>{language === "fr" ? "Niveaus" : "Levels"}</h1>
       <button onClick={() => _enterGame(0, setCurrentLevel, changePage)}>
         1
       </button>
@@ -35,8 +40,8 @@ export default function Levels({ levelProgress, setCurrentLevel, changePage }) {
       >
         5
       </button>
-      <ReturnButton setPage={changePage} />
-      <Footer />
+      <ReturnButton setPage={changePage} language={language} />
+      <Footer language={language} />
     </>
   );
 }

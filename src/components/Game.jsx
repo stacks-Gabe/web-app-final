@@ -20,6 +20,7 @@ export default function Game({
   changeLevelProgress,
   page,
   changePage,
+  language,
 }) {
   const [renderBoard, setRenderBoard] = useState(false);
   const [lockButton, setLockButton] = useState(true);
@@ -145,16 +146,16 @@ export default function Game({
 
   return (
     <>
-      <Header />
+      <Header language={language} />
       <Canvas draw={draw} doRender={renderBoard} />
       <button onClick={() => changePage("Title")}>
-        Return to Title Screen
+        {language === "fr" ? "Retour au Titre" : "Return to Title"}
       </button>
       {/* Return Button custom element when replaced with above line breaks everything */}
       <button onClick={() => changePage("Levels")} disabled={lockButton}>
-        Next Level
+        {language === "fr" ? "Niveau Suivant" : "Next Level"}
       </button>
-      <Footer />
+      <Footer language={language} />
     </>
   );
 }

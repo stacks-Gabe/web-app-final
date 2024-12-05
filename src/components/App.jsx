@@ -27,12 +27,19 @@ export default function App() {
       .then((response) => response.json())
       .then((jsonData) => setLanguage(jsonData?.code))
       .catch((e) => setErrorLang(`${e}`));
+    if (errorLang) {
+      console.log(errorLang);
+    }
   }, []);
 
   return (
     <>
       {page === "Title" ? (
-        <Title currentLevel={currentLevel} changePage={setPage} />
+        <Title
+          currentLevel={currentLevel}
+          changePage={setPage}
+          language={language}
+        />
       ) : page === "Game" ? (
         <Game
           currentLevel={currentLevel}
@@ -41,17 +48,24 @@ export default function App() {
           changeLevelProgress={setLevelProgress}
           page={page}
           changePage={setPage}
+          language={language}
         />
       ) : page === "Levels" ? (
         <Levels
           levelProgress={levelProgress}
           setCurrentLevel={setCurrentLevel}
           changePage={setPage}
+          language={language}
         />
       ) : page === "Controls" ? (
-        <Controls changePage={setPage} />
+        <Controls changePage={setPage} language={language} />
       ) : (
-        <p>{page} is not a valid page</p>
+        <p>
+          {page}{" "}
+          {language === "fr"
+            ? "n'est pas une page valide"
+            : "is not a valid page"}
+        </p>
       )}
     </>
   );

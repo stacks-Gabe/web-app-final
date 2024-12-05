@@ -4,20 +4,20 @@ import {
   loggedInUserDisplayName,
 } from "../services/authService";
 
-export function SignIn() {
+export function SignIn({ language }) {
   return (
-    <button className="button is-ghost" id='sign_in_button' onClick={login}>
-      Sign In
+    <button className="button is-ghost" id="sign_in_button" onClick={login}>
+      {language === "fr" ? "Se Connecter" : "Sign In"}
     </button>
   );
 }
 
-export function SignOut() {
+export function SignOut({ language }) {
   return (
     <div id="signin">
-      Hello, {loggedInUserDisplayName()}
-      <button className="button is-ghost" id='sign_out_button' onClick={logout}>
-        Sign Out
+      {language === "fr" ? "Salut" : "Hello"}, {loggedInUserDisplayName()}
+      <button className="button is-ghost" id="sign_out_button" onClick={logout}>
+        {language === "fr" ? "Se Déconnecter" : "Sign Out"}
       </button>
     </div>
   );
