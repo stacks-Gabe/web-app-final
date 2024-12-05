@@ -8,13 +8,13 @@ export default function Title({ currentLevel, changePage }) {
       <Header />
       <h1 id="jumping-text">
         <span>S</span>
-        <span>o</span>
-        <span>k</span>
-        <span>o</span>
+        <span>O</span>
+        <span>K</span>
+        <span>O</span>
         <span>B</span>
-        <span>a</span>
-        <span>l</span>
-        <span>l</span>
+        <span>A</span>
+        <span>L</span>
+        <span>L</span>
       </h1>
 
       <button id="PLAY" onClick={() => changePage("Game")}>

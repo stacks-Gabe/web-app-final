@@ -9,12 +9,25 @@ body {
   flex-direction: column;
 }
 
+button {
+  padding: 20px 50px;
+  font-size: 1.5em;
+  margin: 10px;
+  text-align: center;
+  border-radius: 12px;
+}
+
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
 #jumping-text {
   font-size: 96px;
   font-weight: bold;
   letter-spacing: 5px;
   margin-bottom: 20px;
-  margin-top: 250px;
+  margin-top: 60px;
   text-align: center;
 }
 
@@ -61,23 +74,6 @@ body {
   100% {
     transform: translateY(0);
   }
-}
-
-button {
-  padding: 20px 50px;
-  font-size: 1.5em;
-  margin: 10px;
-  text-align: center;
-  border-radius: 12px;
-}
-
-button:hover {
-  border-color: #646cff;
-}
-
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
 }
 
 #PLAY {

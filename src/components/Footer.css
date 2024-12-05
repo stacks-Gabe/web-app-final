@@ -1,10 +1,10 @@
 Footer {
   text-align: left;
-  color: lightgray;
+  color: white;
   background-color: rgb(17, 17, 17);
-  padding: 10px 10px;
+  padding: 2px 2px;
   position: absolute;
   width: 100%;
   bottom: 0;
-  left: 0;
+  left: 2px;
 }

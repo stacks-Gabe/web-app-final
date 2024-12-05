@@ -1,6 +1,7 @@
 import Header from "./Header";
 import Footer from "./Footer";
 import "./Levels.css";
+import ReturnButton from "./ReturnButton";
 
 export default function Levels({ levelProgress, setCurrentLevel, changePage }) {
   console.log(levelProgress);
@@ -38,6 +39,7 @@ export default function Levels({ levelProgress, setCurrentLevel, changePage }) {
       <button id="RETURN" onClick={() => changePage("Title")}>
         Return to Title Screen
       </button>
+      {/* <ReturnButton onClick={() => changePage("Title")}/> */}
       <Footer />
     </>
   );

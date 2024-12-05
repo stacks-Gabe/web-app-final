@@ -5,5 +5,8 @@ import "./Header.css";
 
 export default function Header() {
   const user = useAuthentication();
-  return <header>{!user ? <SignIn /> : <SignOut />}</header>;
+  return <header>
+      {!user ? <SignIn id = 'SignIn_Button'/> : <SignOut id = 'SignOut_Button'/>}
+    </header>;
 }
+
