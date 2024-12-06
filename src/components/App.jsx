@@ -16,6 +16,7 @@ export default function App() {
   const [language, setLanguage] = useState("en");
   const [errorLang, setErrorLang] = useState("");
 
+
   useEffect(() => {
     if (user) {
       fetchProgress().then(setLevelProgress);
