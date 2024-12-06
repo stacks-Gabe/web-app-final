@@ -1,40 +1,50 @@
 header {
+    width: 95%; 
+    margin: 0 auto; 
     text-align: left;
     color: red;
-    padding: 2px 2px;
-    position:absolute;
-    width: 100%;
+    padding: 2px;
+    position: absolute;
     top: 0;
     left: 2px;
-    
+    font-size: 80%;
 }
 
-#sign_in_button {
-    color: red;
-    position: relative;
+#sign_in_button, #sign_out_button {
+    display: inline-block;
+    color: orangered;
+    position: absolute;
+    left: 0;
+    top: 10px;
     z-index: 1;
     font-weight: 900;
+    font-size: 12px;
+    height: 40px;
+    width: 100px;
+    line-height: normal;
+    text-align: center;
+    padding: 5px;
+    background-color: black;
+    border: 2px solid red;
+    border-radius: 5px;
+    transition: transform 0.2s, border-width 0.2s;
+    box-sizing: border-box;
 }
-  
+
 #sign_in_button:hover {
     cursor: pointer;
-    border-width: 6px;
-    transform: translateY(-30px);
+    border-width: 3px;
+    transform: translateY(-5px);
+    background-color: orangered;
+    color: white;
+    border-color: black;
 }
-  
-  
-@keyframes hover-lift {
-    0% {
-        transform: translateY(0);
-        color: orange;
-    }
-    50% {
-        transform: translateY(-10px);
-        color: orangered;
-    }
-    100% {
-        transform: translateY(-15px);
-        color: red;
-    }
+
+#sign_out_button:hover {
+    cursor: pointer;
+    border-width: 3px;
+    transform: translateY(-5px);
+    background-color: black;
+    color: orangered;
+    border-color: red;
 }
-  
