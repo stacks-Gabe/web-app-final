@@ -204,6 +204,15 @@ export class Board {
       let tile = null;
       do {
         tile = this._undoStack.pop();
+        console.log(tile);
+        if (
+          tile.tile instanceof Empty &&
+          this._undoStack.length !== 0 &&
+          this._undoStack[this._undoStack.length - 1].tile instanceof Crate &&
+          this._checkOnGoal(tile.row, tile.col)
+        ) {
+          this._crateAtGoals--;
+        }
         this.topBoardLayer[tile.row][tile.col] = tile.tile;
       } while (!(tile.tile instanceof Ball));
       this._ballPos = { row: tile.row, col: tile.col };
