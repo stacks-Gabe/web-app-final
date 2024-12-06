@@ -18,7 +18,6 @@ export default function Game({
   changeCurrentLevel,
   levelProgress,
   changeLevelProgress,
-  page,
   changePage,
   language,
 }) {

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useAuthentication } from "../services/authService";
+import { saveProgress, fetchProgress } from "../services/saveService";
 
 import Title from "./Title";
 import Game from "./Game";
@@ -17,10 +18,15 @@ export default function App() {
 
   useEffect(() => {
     if (user) {
-      // TODO: Set the levelProgress from signing in!
-      setLevelProgress(0);
+      fetchProgress().then(setLevelProgress);
     }
   }, [user]);
+
+  useEffect(() => {
+    if (user) {
+      saveProgress(levelProgress);
+    }
+  }, [levelProgress]);
 
   useEffect(() => {
     fetch("https://hellosalut.stefanbohacek.dev/?mode=auto")
@@ -46,6 +52,8 @@ export default function App() {
           changeCurrentLevel={setCurrentLevel}
           levelProgress={levelProgress}
           changeLevelProgress={setLevelProgress}
+          user={user}
+          saveProgress={saveProgress}
           page={page}
           changePage={setPage}
           language={language}
