@@ -113,7 +113,8 @@ export default function Game({
     }
   };
 
-  function _handleKeyDown(event) {
+  const _handleKeyDown = (event) => {
+    console.log(event.keyCode);
     switch (event.keyCode) {
       case W_KEY:
       case UP_KEY:
@@ -141,7 +142,7 @@ export default function Game({
         break;
     }
     setRenderBoard(true);
-  }
+  };
 
   return (
     <>

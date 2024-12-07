@@ -204,7 +204,6 @@ export class Board {
       let tile = null;
       do {
         tile = this._undoStack.pop();
-        console.log(tile);
         if (
           tile.tile instanceof Empty &&
           this._undoStack.length !== 0 &&

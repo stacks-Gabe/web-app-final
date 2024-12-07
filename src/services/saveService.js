@@ -37,7 +37,6 @@ export async function fetchProgress() {
       const docSnap = await getDoc(userDocRef);
       if (docSnap.exists()) {
         const levelsCompleted = docSnap.data().levelsCompleted;
-        console.log("Levels completed:", levelsCompleted);
         return levelsCompleted;
       } else {
         return null;
@@ -47,11 +46,3 @@ export async function fetchProgress() {
     }
   }
 }
-// const snapshot = await getDocs(query(collection(db, "Levels Completed")));
-// const docSnap = await getDoc(doc(db, "Levels Completed"))
-// const progress = snapshot.docs.map((doc) => ({
-//   id: doc.id,
-//   ...doc.data(),
-// }));
-// console.log(doc.data())
-// return ;
