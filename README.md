@@ -4,6 +4,8 @@ A game made by Wesley Ng and Gabriel Garcia
 
 SokoBall is a mini-web game where you play as a ball trying to move crates to their designated spots. This is a twist of the Sokoban puzzle genre, where you normally move one tile at a time, similar to the 1982 Japanese game _Sokoban_. In this game however, you move until your ball hits a wall or crate. This limitation challenges the player to think critically on how to get to certain locations while rolling from wall to wall.
 
+[SokoBall WebApp](https://soko-ball.web.app/)
+
 ## How to Use:
 
 You are presented with a few options upon launching the home page:
@@ -40,6 +42,7 @@ There's crates all over the place! Your task is to move the crates to the green 
 ### API
 
 - Asciified: https://github.com/thelicato/asciified
+
 - Hello, Salut!: https://stefanbohacek.com/project/hellosalut-api/
 
 ### Database
