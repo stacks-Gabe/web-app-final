@@ -21,7 +21,7 @@ export default function Game({
   changePage,
   language,
 }) {
-  const [renderBoard, setRenderBoard] = useState(false);
+  const [renderBoard, setRenderBoard] = useState(true);
   const [lockButton, setLockButton] = useState(true);
   const game = new Board(currentLevel);
 
@@ -54,21 +54,21 @@ export default function Game({
     // Tiles
     for (let row = 0; row < game.getRows(); row++) {
       for (let col = 0; col < game.getCols(); col++) {
-        const topimage = new Image();
+        const topImage = new Image();
         const bottomImage = new Image();
         // Bottom Tile
         switch (game.bottomBoardLayer[row][col].sprite) {
           case "^":
-            topimage.src = SpikesSprite;
-            ctx.drawImage(topimage, col * 30, row * 30);
+            topImage.src = SpikesSprite;
+            ctx.drawImage(topImage, col * 30, row * 30);
             break;
           case "O":
-            topimage.src = PitSprite;
-            ctx.drawImage(topimage, col * 30, row * 30);
+            topImage.src = PitSprite;
+            ctx.drawImage(topImage, col * 30, row * 30);
             break;
           case "G":
-            topimage.src = CrateGoalSprite;
-            ctx.drawImage(topimage, col * 30, row * 30);
+            topImage.src = CrateGoalSprite;
+            ctx.drawImage(topImage, col * 30, row * 30);
             break;
           default:
             break;
@@ -92,6 +92,7 @@ export default function Game({
         }
       }
     }
+    setRenderBoard(false);
     if (game.isPuzzleSolved()) {
       ctx.font = "20px Calibri";
       ctx.fillStyle = FONT_OUTLINE_COLOR;
