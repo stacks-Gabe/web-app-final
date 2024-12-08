@@ -1,10 +1,18 @@
+.controlsContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .controlsContainer {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); 
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(1, 1fr);
   gap: 20px;
   align-items: center;
   text-align: center;
-  margin-top: 20px; 
+  margin-top: 0.5vh;
+  padding: 20px;
 }
 
 .controlsContainerItem {
@@ -15,8 +23,6 @@
 }
 
 .controlsContainerItem img {
-  width: 80px;
-  height: auto;
   margin-top: 5px;
 }
 
@@ -29,31 +35,4 @@ h1 {
 
 h2 {
   margin-bottom: 5px;
-}
-
-.returnButton {
-  margin-top: 20px;
-}
-
-#controlsContainerMiniRow {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  align-items: center;
-}
-
-.controlsContainerItemMovement {
-  grid-column: 1; 
-}
-
-.controlsContainerItemReset {
-  grid-column: 2; 
-}
-
-.controlsContainerItemUndo {
-  grid-column: 3; 
-}
-
-.controlsContainerItemReturnButton {
-  grid-column: 4; 
 }

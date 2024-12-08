@@ -6,5 +6,9 @@ Footer {
   position: absolute;
   width: 100%;
   bottom: 0;
-  left: 2px;
+  left: 0px;
+}
+
+footer {
+  padding-left: 20px;
 }

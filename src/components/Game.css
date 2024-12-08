@@ -1,15 +1,26 @@
 .gameContainer {
-  margin-top: 20px;
-  flex-direction: column-reverse;
-  align-items: stretch;
-}
-
-.gameContainerItem {
   display: flex;
+  flex-direction: column;
   align-items: stretch;
-  justify-content: flex-start;
 }
 
 canvas {
   width: 50vh;
+}
+
+.buttonNext {
+  font-family: Pixelated-Elegance, Inter, system-ui, Avenir, Helvetica, Arial,
+    sans-serif;
+  color: gray;
+  background-color: rgb(10, 214, 92);
+}
+.buttonNext:hover {
+  color: black;
+  background-color: rgb(98, 249, 173);
+  cursor: pointer;
+}
+.buttonNext:disabled {
+  color: black;
+  background-color: rgb(101, 101, 101);
+  cursor: not-allowed;
 }

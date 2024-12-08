@@ -12,6 +12,7 @@ import CrateGoalSprite from "../img/CrateGoal.png";
 import PitSprite from "../img/Pit.png";
 import SpikesSprite from "../img/Spikes.png";
 import WallSprite from "../img/Wall.png";
+import ReturnButton from "./ReturnButton.jsx";
 
 export default function Game({
   currentLevel,
@@ -155,19 +156,17 @@ export default function Game({
           doRender={renderBoard}
         />
         <button
-          className="gameContainerItem"
-          onClick={() => changePage("Title")}
-        >
-          {language === "fr" ? "Retour au Titre" : "Return to Title"}
-        </button>
-        {/* Return Button custom element when replaced with above line breaks everything */}
-        <button
-          className="gameContainerItem"
+          className="buttonNext"
           onClick={() => changePage("Levels")}
           disabled={lockButton}
         >
           {language === "fr" ? "Niveau Suivant" : "Next Level"}
         </button>
+        <ReturnButton
+          className="buttonReturn"
+          setPage={changePage}
+          language={language}
+        />
       </div>
       <Footer language={language} />
     </>

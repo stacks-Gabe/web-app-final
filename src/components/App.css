@@ -1,3 +1,8 @@
+@font-face {
+  font-family: Pixelated-Elegance;
+  src: url(..\font\PixelatedEleganceRegular-ovyAA.ttf);
+}
+
 html,
 body {
   margin: 0;
@@ -7,19 +12,21 @@ body {
 
 #root {
   max-width: 1280px;
-  margin: 0 ;
+  margin: 0;
   padding: 2rem;
   flex: auto;
 }
 
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: Pixelated-Elegance, Inter, system-ui, Avenir, Helvetica, Arial,
+    sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #223748;
+  background-image: url(..\img\Tile.png);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -45,13 +52,10 @@ body {
   min-height: 100vh;
 }
 
-
-
-
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
-    background-color: #ffffff;
+    background-color: #8ec2ea;
   }
   a:hover {
     color: #747bff;

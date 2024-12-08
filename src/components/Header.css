@@ -1,50 +1,51 @@
 header {
-    width: 95%; 
-    margin: 0 auto; 
-    text-align: left;
-    color: red;
-    padding: 2px;
-    position: absolute;
-    top: 0;
-    left: 2px;
-    font-size: 80%;
+  width: 95%;
+  margin: 0 auto;
+  text-align: left;
+  color: red;
+  padding: 2px;
+  position: absolute;
+  top: 0;
+  left: 2px;
+  font-size: 80%;
 }
 
-#sign_in_button, #sign_out_button {
-    display: inline-block;
-    color: orangered;
-    position: absolute;
-    left: 0;
-    top: 10px;
-    z-index: 1;
-    font-weight: 900;
-    font-size: 12px;
-    height: 40px;
-    width: 100px;
-    line-height: normal;
-    text-align: center;
-    padding: 5px;
-    background-color: black;
-    border: 2px solid red;
-    border-radius: 5px;
-    transition: transform 0.2s, border-width 0.2s;
-    box-sizing: border-box;
+#sign_in_button,
+#sign_out_button {
+  display: inline-block;
+  color: orangered;
+  position: absolute;
+  left: 0;
+  top: 10px;
+  z-index: 1;
+  font-weight: 900;
+  font-size: 12px;
+  height: 40px;
+  width: 100px;
+  line-height: normal;
+  text-align: center;
+  padding: 5px;
+  background-color: black;
+  border: 2px solid red;
+  border-radius: 5px;
+  transition: transform 0.2s, border-width 0.2s;
+  box-sizing: border-box;
 }
 
 #sign_in_button:hover {
-    cursor: pointer;
-    border-width: 3px;
-    transform: translateY(-5px);
-    background-color: orangered;
-    color: black;
-    border-color: black;
+  cursor: pointer;
+  border-width: 3px;
+  transform: translateY(-5px);
+  background-color: orangered;
+  color: black;
+  border-color: black;
 }
 
 #sign_out_button:hover {
-    cursor: pointer;
-    border-width: 3px;
-    transform: translateY(-5px);
-    background-color: black;
-    color: orangered;
-    border-color: red;
+  cursor: pointer;
+  border-width: 3px;
+  transform: translateY(-5px);
+  background-color: black;
+  color: orangered;
+  border-color: red;
 }

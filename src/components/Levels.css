@@ -1,0 +1,39 @@
+.buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.buttonLevel1,
+.buttonLevel2,
+.buttonLevel3,
+.buttonLevel4,
+.buttonLevel5 {
+  font-family: Pixelated-Elegance, Inter, system-ui, Avenir, Helvetica, Arial,
+    sans-serif;
+  background-color: rgb(44, 93, 177);
+  width: 9vw;
+}
+.buttonLevel1:hover,
+.buttonLevel2:hover,
+.buttonLevel3:hover,
+.buttonLevel4:hover,
+.buttonLevel5:hover {
+  background-color: rgb(55, 131, 194);
+  cursor: pointer;
+}
+.buttonLevel2:disabled,
+.buttonLevel3:disabled,
+.buttonLevel4:disabled,
+.buttonLevel5:disabled {
+  background-color: rgb(44, 93, 177);
+  cursor: not-allowed;
+}
+
+.buttonLevelCollection {
+  display: grid;
+  column-gap: 0.5vw;
+  grid-template-columns: repeat(auto, 5);
+  grid-template-rows: auto;
+  grid-template-areas: "buttonLevel1 buttonLevel2 buttonLevel3 buttonLevel4 buttonLevel5";
+}

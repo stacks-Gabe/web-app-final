@@ -41,10 +41,12 @@ There's crates all over the place! Your task is to move the crates to the green 
 
 ### API
 
-- Asciified: https://github.com/thelicato/asciified
-
 - Hello, Salut!: https://stefanbohacek.com/project/hellosalut-api/
 
 ### Database
 
 - Firebase: https://console.firebase.google.com/
+
+### Font
+
+- Pixelated Elegance Font: https://www.fontspace.com/pixelated-elegance-font-f126145
