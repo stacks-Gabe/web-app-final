@@ -6,7 +6,7 @@
 import React, { useRef, useLayoutEffect } from "react";
 
 const Canvas = (props) => {
-  const { draw, doRender, ...rest } = props;
+  const { draw, ...rest } = props;
   const canvasRef = useRef(null);
 
   useLayoutEffect(() => {
@@ -14,7 +14,6 @@ const Canvas = (props) => {
     const context = canvas.getContext("2d");
     let animationFrameId;
 
-    console.log(doRender);
     const render = () => {
       draw(context);
       animationFrameId = window.requestAnimationFrame(render);
