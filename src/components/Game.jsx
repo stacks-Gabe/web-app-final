@@ -52,12 +52,10 @@ export default function Game({
     ctx.canvas.width = game.getCols() * 30;
     // Background Color
     if (renderBackground) {
-      console.log(renderBackground);
       ctx.fillStyle = BACKGROUND_COLOR;
       ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
       const newRenderBackground = false;
       setRenderBackground(newRenderBackground);
-      console.log(newRenderBackground);
     }
     // Tiles
     for (let row = 0; row < game.getRows(); row++) {
