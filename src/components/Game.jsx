@@ -13,6 +13,7 @@ import PitSprite from "../img/Pit.png";
 import SpikesSprite from "../img/Spikes.png";
 import WallSprite from "../img/Wall.png";
 import ReturnButton from "./ReturnButton.jsx";
+import { render } from "react-dom";
 
 export default function Game({
   currentLevel,
@@ -22,8 +23,8 @@ export default function Game({
   changePage,
   language,
 }) {
-  const [renderBoard, setRenderBoard] = useState(true);
   const [lockButton, setLockButton] = useState(true);
+  const [renderBackground, setRenderBackground] = useState(true);
   const game = new Board(currentLevel);
 
   const W_KEY = 87;
@@ -50,8 +51,14 @@ export default function Game({
     ctx.canvas.height = game.getRows() * 30;
     ctx.canvas.width = game.getCols() * 30;
     // Background Color
-    ctx.fillStyle = BACKGROUND_COLOR;
-    ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+    if (renderBackground) {
+      console.log(renderBackground);
+      ctx.fillStyle = BACKGROUND_COLOR;
+      ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+      const newRenderBackground = false;
+      setRenderBackground(newRenderBackground);
+      console.log(newRenderBackground);
+    }
     // Tiles
     for (let row = 0; row < game.getRows(); row++) {
       for (let col = 0; col < game.getCols(); col++) {
@@ -93,7 +100,6 @@ export default function Game({
         }
       }
     }
-    setRenderBoard(false);
     if (game.isPuzzleSolved()) {
       ctx.font = "20px Calibri";
       ctx.fillStyle = FONT_OUTLINE_COLOR;
@@ -143,18 +149,15 @@ export default function Game({
       default:
         break;
     }
-    setRenderBoard(true);
+    setRenderBackground(true);
+    console.log(renderBackground);
   };
 
   return (
     <>
       <Header language={language} />
       <div className="gameContainer">
-        <Canvas
-          className="gameContainerItem"
-          draw={draw}
-          doRender={renderBoard}
-        />
+        <Canvas className="gameContainerItem" draw={draw} />
         <button
           className="buttonNext"
           onClick={() => changePage("Levels")}
